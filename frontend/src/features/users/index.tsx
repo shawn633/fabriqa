@@ -40,7 +40,7 @@ export default function Users() {
         </div>
       </Main>
 
-      {/* <UsersDialogs /> */}
+      <UsersDialogs />
     </UsersProvider>
   )
 }

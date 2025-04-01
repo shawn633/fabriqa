@@ -5,6 +5,7 @@ import { UsersInviteDialog } from './users-invite-dialog'
 
 export function UsersDialogs() {
   const { open, setOpen, currentRow, setCurrentRow } = useUsers()
+  console.log('UsersDialogs')
   return (
     <>
       <UsersActionDialog
