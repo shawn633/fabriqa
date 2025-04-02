@@ -27,7 +27,7 @@ interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   // 可能还需要一个 onSubmit 回调，将数据发送到 API
-  onFormSubmit: (data: UserFormData, isEdit: boolean) => Promise<void>;
+  onFormSubmit?: (data: UserFormData, isEdit: boolean) => Promise<void>;
 }
 
 export function UsersActionDialog({ currentRow, open, onOpenChange, onFormSubmit }: Props) {
@@ -66,7 +66,7 @@ export function UsersActionDialog({ currentRow, open, onOpenChange, onFormSubmit
   const handleSubmit = async (values: UserFormData) => {
     try {
       // 调用外部传入的提交逻辑
-      await onFormSubmit(values, isEdit);
+      await onFormSubmit?.(values, isEdit);
 
       toast({
         title: `User ${isEdit ? 'updated' : 'added'} successfully!`,
@@ -115,7 +115,7 @@ export function UsersActionDialog({ currentRow, open, onOpenChange, onFormSubmit
             onSubmit={handleSubmit}
             defaultValues={defaultValues}
             formId="user-action-form" // 给表单一个 ID
-            layoutProps={{ formClassName: 'space-y-4 px-0.5',fieldContainerClassName:'grid grid-cols-6 items-center gap-x-4 gap-y-1 space-y-0',fieldItemClassName:'col-span-4 text-left' }} // 自定义表单内部样式
+            layoutProps={{ formClassName: 'space-y-4 px-0.5', fieldItemClassName: ' items-center gap-x-4 gap-y-1 space-y-0', fieldContainerClassName: 'col-span-4 col-start-3' }} // 自定义表单内部样式
             // submitButtonText={isEdit ? 'Save Changes' : 'Create User'} // 不再需要，按钮放在 Footer
           />
         </ScrollArea>

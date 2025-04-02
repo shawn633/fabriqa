@@ -23,7 +23,7 @@ const defaultGridConfig = {
   message: 'col-span-4 col-start-3',
 };
 
-export function JsonForm<TSchema extends z.AnyZodObject>({
+export function JsonForm<TSchema extends z.ZodTypeAny>({
   schema,
   config,
   componentMap,
